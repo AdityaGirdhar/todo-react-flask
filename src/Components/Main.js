@@ -12,8 +12,9 @@ export default function Main({todos, onDelete}) {
           return (<TodoItem task={todo} key={todo.sno} onDelete={onDelete}/>)
         })
         }
-        <div className='mh-100'>
-            <center className='min-vh-50'>You can do it.</center>
+        <div className='m-5'>
+            <br/>
+            <br/>
         </div>
     </div>
   )
