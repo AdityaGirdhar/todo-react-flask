@@ -1,5 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {
+    createBrowserRouter,
+    RouterProvider,
+    Route,
+    Link,
+    Router,
+    Routes,
+    BrowserRouter
+  } from "react-router-dom";
 
 export default function Navbar(props) {
   return (
@@ -16,13 +25,13 @@ export default function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0 ">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">Home</a>
+                <Link to="/" className="nav-link active">Home</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Pricing</a>
+                <Link to="/pricing" className="nav-link active">Pricing</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">About</a>
+                <Link to="/about" className="nav-link active">About</Link>
               </li>
             </ul>
               { props.button ? <a className="btn btn-outline-success" href='https://github.com/AdityaGirdhar' target='_blank'>GitHub</a> : ""}

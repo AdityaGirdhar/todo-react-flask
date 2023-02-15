@@ -2,6 +2,16 @@ import React, { useEffect, useState } from 'react';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import Main from './Components/Main';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+  Router,
+  Routes,
+  BrowserRouter
+} from "react-router-dom";
+
 
 function App() {
   let tempTodo;
@@ -41,9 +51,20 @@ function App() {
 
   return (
     <>
-      <Navbar title="GirdharDo!"/>
-      <Main todos={todos} onDelete={onDelete} addTodo={addTodo} deleteAll={deleteAll}/>
-      <Footer/>
+      <BrowserRouter>
+      <Navbar title="GirdharDo!" />
+        <Routes>
+          <Route path="/" element={
+            <Main todos={todos} onDelete={onDelete} addTodo={addTodo} deleteAll={deleteAll}/>
+          } />
+          <Route index element={
+            <Main todos={todos} onDelete={onDelete} addTodo={addTodo} deleteAll={deleteAll}/>
+          } />
+          <Route path="/about" element={<div>About</div>} />
+          <Route path="/pricing" element={<div>Pricing</div>} />
+        </Routes>
+      <Footer />
+      </BrowserRouter>
     </>
   );
 }
