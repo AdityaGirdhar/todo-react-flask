@@ -8,9 +8,11 @@ export default function Main({todos, onDelete}) {
         <div className="my-3 p-4">
           <input type="text" className="form-control w-100" id="exampleFormControlInput1" placeholder="Enter a new task"/>
         </div>
-        {todos.map((todo) => {
+        {todos.length === 0 ? <center>Nothing to see here.</center> :
+        todos.map((todo) => {
           return (<TodoItem task={todo} key={todo.sno} onDelete={onDelete}/>)
-        })}
+        })
+        }
     </div>
   )
 }
