@@ -5,15 +5,24 @@ import Main from './Components/Main';
 
 function App() {
   const onDelete = (todo) => {
-    console.log("Clicked ", todo);
-
-    setTodos(todos.filter((element) => {
+      setTodos(todos.filter((element) => {
       return (element !== todo);
     }));
   }
+
+  const addTodo = (title, desc) => {
+    const newSno = todos[0].sno + 1;
+    const newTodo = {
+      sno: newSno,
+      title: title,
+      desc: desc,
+    }
+    setTodos([newTodo, ...todos])
+  }
+
   const [todos, setTodos] = useState([
     {
-      sno: 1,
+      sno: 3,
       title: "Start web development bro",
       desc: "You've been procastinating for far too long. It's time you get your life together."
     },
@@ -23,7 +32,7 @@ function App() {
       desc: "You've been procastinating for far too long. It's time you get your life together."
     },
     {
-      sno: 3,
+      sno: 1,
       title: "Start competitive programming bro",
       desc: "You've been procastinating for far too long. It's time you get your life together."
     }
@@ -32,7 +41,7 @@ function App() {
   return (
     <>
       <Navbar title="GirdharDo!"/>
-      <Main todos={todos} onDelete={onDelete}/>
+      <Main todos={todos} onDelete={onDelete} addTodo={addTodo}/>
       <Footer/>
     </>
   );
