@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      <Navbar title="Todo!"/>
+      <Navbar title="GirdharDo!"/>
       <Main todos={todos} onDelete={onDelete}/>
       <Footer/>
     </>
