@@ -14,9 +14,10 @@ function App() {
   const addTodo = (title, desc) => {
     let newSno;
     if (todos.length === 0)
-    newSno = 1 
+      newSno = 1 
     else
-    newSno = todos[0].sno + 1;
+      newSno = todos[0].sno + 1;
+    
     const newTodo = {
       sno: newSno,
       title: title,

@@ -9,10 +9,11 @@ export default function AddTodo({addTodo, deleteAll}) {
 		e.preventDefault();
 		if (!title || !desc) {
 			alert('Please fill both the title and description fields!');
+		} else {
+			addTodo(title, desc);
+			setTitle("");
+			setDesc("");
 		}
-		addTodo(title, desc);
-		setTitle("");
-		setDesc("");
 	}
 	
   return (
