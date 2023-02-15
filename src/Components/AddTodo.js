@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-export default function AddTodo({addTodo}) {
+export default function AddTodo({addTodo, deleteAll}) {
 	const [title, setTitle] = useState("");
 	const [desc, setDesc] = useState("");
 
@@ -11,6 +11,8 @@ export default function AddTodo({addTodo}) {
 			alert('Please fill both the title and description fields!');
 		}
 		addTodo(title, desc);
+		setTitle("");
+		setDesc("");
 	}
 	
   return (
@@ -36,7 +38,7 @@ export default function AddTodo({addTodo}) {
             	<button type="button" className="btn btn-primary mx-2" onClick={submit}>
 								+ Add new task
 							</button>
-            	<button type="button" className="btn btn-danger mx-2">
+            	<button type="button" className="btn btn-danger mx-2" onClick={deleteAll}>
 								× Clear tasks
 							</button>
             </div>
