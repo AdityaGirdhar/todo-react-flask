@@ -52,7 +52,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Navbar title="GirdharDo!" />
+      <Navbar title="Girdhar To-Do!" />
         <Routes>
           <Route path="/" element={
             <Main todos={todos} onDelete={onDelete} addTodo={addTodo} deleteAll={deleteAll}/>
