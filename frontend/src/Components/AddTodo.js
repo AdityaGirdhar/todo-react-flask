@@ -17,7 +17,7 @@ export default function AddTodo({addTodo, deleteAll}) {
 	}
 	
   return (
-    <div className="my-3 p-2">
+    <div className="shadow my-3 p-4 rounded">
         <form onSubmit={submit}>
             <input
 							type="text"

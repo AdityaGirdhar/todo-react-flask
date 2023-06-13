@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import Main from './Components/Main';
+import About from './Components/About';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -52,7 +53,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Navbar title="Girdhar To-Do!" />
+      <Navbar title="Focus" />
         <Routes>
           <Route path="/" element={
             <Main todos={todos} onDelete={onDelete} addTodo={addTodo} deleteAll={deleteAll}/>
@@ -60,10 +61,9 @@ function App() {
           <Route index element={
             <Main todos={todos} onDelete={onDelete} addTodo={addTodo} deleteAll={deleteAll}/>
           } />
-          <Route path="/about" element={<div>About</div>} />
-          <Route path="/pricing" element={<div>Pricing</div>} />
+          <Route path="/about" element={<About/>} />
+          <Route path="/pricing" element={<></>} />
         </Routes>
-      <Footer />
       </BrowserRouter>
     </>
   );

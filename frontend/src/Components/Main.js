@@ -7,6 +7,7 @@ export default function Main({todos, onDelete, addTodo, deleteAll}) {
     <div className='container-sm mt-5 p-4 pb-4'>
         <h3 className='text-center mb-4'>Welcome, here are your tasks for today.</h3>
         <AddTodo addTodo={addTodo} deleteAll={deleteAll}/> 
+        <br/>
         {todos.length === 0 ? <center>Nothing to see here.</center> :
         todos.map((todo) => {
           return (<TodoItem task={todo} key={todo.sno} onDelete={onDelete}/>)
