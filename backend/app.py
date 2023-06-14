@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -16,12 +16,16 @@ class Tasks(db.Model):
     def __repr__(self) -> str:
         return f'{self.sno}: {self.title}'
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def hello_world():
-    task = Tasks(title='First task', desc='With great power, comes great responsibility.')
-    db.session.add(task)
-    db.session.commit()
-    return '<h1>Hello, world!</h1>'
+    if request.method == 'POST':
+        print('post')
+        title = request.form['title']
+        desc = request.form['desc']
+        task = Tasks(title=title, desc=desc)
+        db.session.add(task)
+        db.session.commit()
+    return redirect('http://localhost:3000')
 
 @app.route('/test-data')
 def testData():
@@ -30,8 +34,25 @@ def testData():
 @app.route('/show')
 def show():
     allTodo = Tasks.query.all()
-    print(allTodo)
-    return 'All tasks'
+    print([x.sno for x in allTodo])
+    obj = {"tasks": [{
+        "sno": str(x.sno),
+        "title": str(x.title),
+        "desc": str(x.desc),
+        "date": str(x.date_created)
+        } for x in allTodo]}
+    return obj
+
+@app.route('/update/<int>:sno')
+def update(sno):
+	return {"tasks": ["task1", "task2", "task3"]}
+
+@app.route('/delete/<int:sno>')
+def delete(sno):
+    tbd = Tasks.query.filter_by(sno=sno).first()
+    db.session.delete(tbd)
+    db.session.commit()
+    return 'deleted'
 
 if __name__ == '__main__':
     with app.app_context():
