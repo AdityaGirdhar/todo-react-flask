@@ -52,6 +52,6 @@ python backend/app.py
 * Base URL: The backend is assumed to be hosted at `http://127.0.0.1:5000`.
 * Authentication: The current version of this application does not require authentication or API keys.
 
-For a complete API reference, kindly refer to `backend/README.md`.
+For a complete API reference, refer to `backend/README.md`.
 
 
