@@ -19,13 +19,19 @@ class Tasks(db.Model):
 @app.route('/', methods=['GET', 'POST'])
 def hello_world():
     if request.method == 'POST':
-        print('post')
-        title = request.form['title']
-        desc = request.form['desc']
+        title = request.json['title']
+        desc = request.json['desc']
         task = Tasks(title=title, desc=desc)
         db.session.add(task)
         db.session.commit()
-    return redirect('http://localhost:3000')
+    allTodo = Tasks.query.all()
+    obj = {"tasks": [{
+        "sno": str(x.sno),
+        "title": str(x.title),
+        "desc": str(x.desc),
+        "date": str(x.date_created)
+        } for x in allTodo]}
+    return obj
 
 @app.route('/test-data')
 def testData():
