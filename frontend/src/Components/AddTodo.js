@@ -7,6 +7,10 @@ export default function AddTodo( {setData} ) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		if (title === "") {
+			alert("Sorry, the title can't be empty. Please try again!")
+			return
+		}
 		try {
 			fetch('/', {
 				method: "POST",
@@ -19,7 +23,11 @@ export default function AddTodo( {setData} ) {
 				}
 			})
 			.then(res => res.json())
-			.then(data => setData(data))
+			.then(data => {
+				setData(data)
+				setTitle("")
+				setDesc("")
+			})
 		} catch(err) {
 			console.log(err);
 		}

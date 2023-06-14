@@ -39,19 +39,28 @@ def testData():
 
 @app.route('/show')
 def show():
-    allTodo = Tasks.query.all()
-    print([x.sno for x in allTodo])
+    allTasks = Tasks.query.all()
+    print([x.sno for x in allTasks])
     obj = {"tasks": [{
         "sno": str(x.sno),
         "title": str(x.title),
         "desc": str(x.desc),
         "date": str(x.date_created)
-        } for x in allTodo]}
+        } for x in allTasks]}
     return obj
 
-@app.route('/update/<int>:sno')
+@app.route('/update/<int:sno>', methods=['GET', 'POST'])
 def update(sno):
-	return {"tasks": ["task1", "task2", "task3"]}
+    if request.method == 'POST':
+        title = request.json['title']
+        desc = request.json['desc']
+        task = Tasks.query.filter_by(sno=sno).first()
+        task.title = title
+        task.desc = desc
+        db.session.add(task)
+        db.session.commit()
+    
+    return {"tasks": ["task1", "task2", "task3"]}
 
 @app.route('/delete/<int:sno>')
 def delete(sno):

@@ -31,10 +31,16 @@ export default function Main() {
         <div className='d-flex flex-column flex-column-reverse'>
         {typeof data.tasks === 'undefined' ? (<center>Loading...</center>) :
         ( data.tasks.length === 0 ? (<div className="alert alert-secondary" role="alert">
-        You're all caught up. Add another task now!
-      </div>) : (data.tasks.map((task) => {
-          return (<TodoItem task={task} key={task.sno} onDelete={onDelete}/>)
-        })))
+                                        You're all caught up. Add another task now!
+                                     </div>) :
+          (data.tasks.map((task) => {
+            return (<TodoItem
+                      task={task}
+                      key={task.sno}
+                      onDelete={onDelete}
+                      setData={setData}
+                    />)
+          })))
         }
         </div>
         <div className='m-5'>

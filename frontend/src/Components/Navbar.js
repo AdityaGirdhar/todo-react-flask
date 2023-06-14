@@ -4,7 +4,7 @@ import {
     createBrowserRouter,
     RouterProvider,
     Route,
-    Link,
+    NavLink,
     Router,
     Routes,
     BrowserRouter
@@ -19,19 +19,20 @@ export default function Navbar(props) {
             <img className='m-2' src='https://upload.wikimedia.org/wikipedia/commons/6/67/Microsoft_To-Do_icon.png' width="30px"/>
             <span className='fw-bold'>{props.title}</span>
           </a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button className="navbar-toggler" type="button">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0 ">
               <li className="nav-item">
-                <Link to="/" className="nav-link active">Home</Link>
+                <NavLink to="/" className={({ isActive, isPending }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }>Home</NavLink>
               </li>
               <li className="nav-item">
-                <Link to="/pricing" className="nav-link active">Pricing</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/about" className="nav-link active">About</Link>
+              <NavLink to="/pricing" className={({ isActive, isPending }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }>API Reference</NavLink>
               </li>
             </ul>
               { props.button ? <a className="btn btn-outline-dark" href='https://github.com/AdityaGirdhar/Focus' target='_blank'>Contribute!</a> : ""}
