@@ -15,6 +15,7 @@ import {
 
 
 function App() {
+
   let tempTodo;
 
   if (localStorage.getItem("todos"))
@@ -56,10 +57,7 @@ function App() {
       <Navbar title="Focus" />
         <Routes>
           <Route path="/" element={
-            <Main todos={todos} onDelete={onDelete} addTodo={addTodo} deleteAll={deleteAll}/>
-          } />
-          <Route index element={
-            <Main todos={todos} onDelete={onDelete} addTodo={addTodo} deleteAll={deleteAll}/>
+            <Main todos={todos} addTodo={addTodo} deleteAll={deleteAll}/>
           } />
           <Route path="/about" element={<About/>} />
           <Route path="/pricing" element={<></>} />

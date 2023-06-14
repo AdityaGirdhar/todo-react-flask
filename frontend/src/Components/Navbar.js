@@ -34,7 +34,7 @@ export default function Navbar(props) {
                 <Link to="/about" className="nav-link active">About</Link>
               </li>
             </ul>
-              { props.button ? <a className="btn btn-outline-success" href='https://github.com/AdityaGirdhar' target='_blank'>GitHub</a> : ""}
+              { props.button ? <a className="btn btn-outline-success" href='https://github.com/AdityaGirdhar/Focus' target='_blank'>Contribute!</a> : ""}
           </div>
         </div>
       </nav>

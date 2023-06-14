@@ -4,11 +4,10 @@ export default function About() {
 	const [data, setData] = useState([{}])
 
 	useEffect(() => {
-		fetch('/test-data').then(
+		fetch('/show').then(
 			res => res.json()
 		).then(data => {
 			setData(data)
-			console.log(data.tasks)
 		})
 	}, [])
 
@@ -18,8 +17,8 @@ export default function About() {
 				<p>Loading...</p>
 			) : (
 				// <p>hello</p>
-				data.tasks.map((task, i) => (
-					<p key={i}> {task} </p>
+				data.tasks.map((task) => (
+					<p key={task.sno}> {task.title} </p>
 				))
 			)}
 		</div>
