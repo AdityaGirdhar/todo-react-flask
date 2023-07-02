@@ -1,4 +1,4 @@
-# Flask-based Full-Stack Tasks API
+Full-Stack Tasks API
 
 ## Getting started
 
